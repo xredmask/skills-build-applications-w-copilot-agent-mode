@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 require("./config/database");
-const baseUrl_1 = require("./config/baseUrl");
+const server_1 = require("./config/server");
 const activities_1 = __importDefault(require("./routes/activities"));
 const leaderboard_1 = __importDefault(require("./routes/leaderboard"));
 const teams_1 = __importDefault(require("./routes/teams"));
@@ -20,9 +20,9 @@ app.use('/api/activities', activities_1.default);
 app.use('/api/leaderboard', leaderboard_1.default);
 app.use('/api/workouts', workouts_1.default);
 app.get('/api/health', (_req, res) => {
-    res.status(200).json({ status: 'ok', apiBaseUrl: baseUrl_1.apiBaseUrl });
+    res.status(200).json({ status: 'ok', apiBaseUrl: server_1.apiBaseUrl });
 });
 app.listen(port, () => {
     console.log(`Backend running on port ${port}`);
-    console.log(`API base URL: ${baseUrl_1.apiBaseUrl}`);
+    console.log(`API base URL: ${server_1.apiBaseUrl}`);
 });
